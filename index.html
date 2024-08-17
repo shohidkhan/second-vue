@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue bangla tutorial</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <label for="">Background Color: </label>
+        <input type="text" v-model="bgColor" />
+        <input type="color" v-model="bgColor" />
+        <br />
+        <label for="">Text Color: </label>
+        <input type="text" v-model="textColor" />
+        <input type="color" v-model="textColor" />
+        <br />
+        <label for="">width: </label>
+        <input type="number" v-model.number="cardWidth" />
+        <br />
+        <label for="">Height: </label>
+        <input type="number" v-model.number="cardHeight" />
+        <br />
+        <label for="">Border Radius: </label>
+        <input type="text" v-model.number="borderRadius" />
+        <br />
+        <input type="checkbox" v-model="isTextAlign" value="isTextAlign" />
+        <label for="">text Align</label>
+        <br />
+        <div v-if="isTextAlign">
+          <label for="">Text Align: </label>
+          <select v-model="textAlign">
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+            <option value="center">Center</option>
+          </select>
+        </div>
+        <br />
+        <input type="checkbox" v-model="isDisplayFlex" value="isDisplayFlex" />
+        <label for="">Is Display Flex</label>
+        <br />
+        <div v-if="isDisplayFlex">
+          <label for="">Align items: </label>
+          <select v-model="alignItems">
+            <option value="start">start</option>
+            <option value="end">End</option>
+            <option value="center">Center</option>
+          </select>
+          <br />
+          <label for="">Justify Content: </label>
+          <select v-model="JustifyContent">
+            <option value="left">left</option>
+            <option value="end">End</option>
+            <option value="center">Center</option>
+          </select>
+        </div>
+        <br />
+        <br />
+        <div
+          class="card"
+          :style="{backgroundColor:bgColor,color:textColor,width:cardWidth+'px',height:cardHeight+'px',borderRadius:borderRadius+'px',textAlign:isTextAlign?textAlign:null,display:isDisplayFlex?'flex':display,alignItems:alignItems,justifyContent:JustifyContent}"
+        >
+          A custome card
+        </div>
+      </div>
+
+      <br />
+      <hr />
+      <br />
+      <h1>Loop and list rendering</h1>
+      <div>
+        <input type="text" v-model="skill" />
+        <button @click="addSkill">Add</button>
+        <br />
+        <br />
+        <ul>
+          <li
+            v-for="(skill,i) in skills"
+            :key="skil"
+            @click="deleteSkill(skill,i)"
+          >
+            {{ i+1 }}-{{ skill }}
+          </li>
+        </ul>
+      </div>
+
+      <br />
+      <hr />
+      <br />
+      <h2>Watcher</h2>
+      <h3>{{ count }}</h3>
+      <button @click="count++">Increase</button>
+      <button @click="count--">Decrease</button>
+
+      <br />
+      <input type="text" v-model="mobile" />
+    </div>
+    <script src="vue.global.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
